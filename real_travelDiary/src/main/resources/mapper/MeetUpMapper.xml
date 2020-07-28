@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.travel.mapper.MeetUpMapper">
+  
+  <select id="meetUpInfo" resultType="com.travel.vo.MeetUpVO">select * from meetup LEFT OUTER JOIN user on meetup.user_idx = user.idx</select>
+  <select id="meetUpDetails" resultType="com.travel.vo.MeetUpVO">select * from meetup where idx=#{meetupBoard_idx}</select>
+  <insert id="insertMeetup">insert into meetup (user_idx,destination,title,max_attendees,date_start,date_end,contents) values (#{user_idx},#{destination},#{title},#{max_attendees},#{date_start},#{date_end},#{contents})</insert>
+  </mapper>

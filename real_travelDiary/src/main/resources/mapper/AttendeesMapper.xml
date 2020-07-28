@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.travel.mapper.AttendeesMapper">
+  <select id="Attendees" resultType="com.travel.vo.AttendeesVO">select * from attendees LEFT OUTER JOIN user on attendees.attendees_idx = user.idx where board_idx=#{meetupBoard_idx}</select>
+  <select id="attendStatus" resultType="Integer">select count(*) from attendees where board_idx=#{meetupBoard_idx} and attendees_idx=#{user_idx}</select>
+  <delete id="deleteattendlist">delete from attendees where board_idx=#{meetupBoard_idx} and attendees_idx=#{user_idx}</delete>
+  <insert id="insertattendlist">insert into attendees (board_idx,attendees_idx) values(#{meetupBoard_idx},#{user_idx});</insert>
+  
+  </mapper>
